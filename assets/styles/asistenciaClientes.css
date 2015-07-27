@@ -1,3 +1,16 @@
-#table-clients {
+#table-clients, #new-client {
 	color: #000 !important;
+}
+
+#response-messages {
+	margin: 10px 15px 0px 15px;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.selected-class {
+	background: #1A8FB4 !important;
+	margin: 5px 10px !important;
 }

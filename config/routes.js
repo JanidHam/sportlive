@@ -36,7 +36,21 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'POST /list-clients': 'ClientController.getActiveClients'
+  '/agregar-cliente': {
+    view: 'addclient'
+  },
+
+  'POST /list-clients': 'ClientController.getActiveClients',
+
+  'POST /add-client': 'ClientController.addNewClient',
+
+  'POST /classes-schedule': 'ClassscheduleController.getClassSchedule',
+
+  'POST /hours': 'HourController.getAllHours',
+
+  'POST /active-disciplines': 'DisciplinaController.getActiveDisciplines',
+
+  'POST /active-packages': 'PaqueteController.getActivePackages'
 
   /***************************************************************************
   *                                                                          *

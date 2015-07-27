@@ -2724,7 +2724,7 @@ th{
 }
 
 .table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>td,.table>tbody>tr>td,.table>tfoot>tr>td{
-	padding:8px;
+	padding:3px;
 	line-height:1.42857143;
 	vertical-align:top;
 	border-top:1px solid #dddddd
@@ -2752,7 +2752,7 @@ th{
 }
 
 .table-bordered{
-	border:1px solid #dddddd
+	border:1px solid #000
 }
 
 .table-bordered>thead>tr>th,.table-bordered>tbody>tr>th,.table-bordered>tfoot>tr>th,.table-bordered>thead>tr>td,.table-bordered>tbody>tr>td,.table-bordered>tfoot>tr>td{
@@ -7243,7 +7243,7 @@ table .success a:not(.btn),.table .success a:not(.btn),table .warning a:not(.btn
 }
 
 table>thead>tr>th,.table>thead>tr>th,table>tbody>tr>th,.table>tbody>tr>th,table>tfoot>tr>th,.table>tfoot>tr>th,table>thead>tr>td,.table>thead>tr>td,table>tbody>tr>td,.table>tbody>tr>td,table>tfoot>tr>td,.table>tfoot>tr>td{
-	border-color:transparent
+	border-color:#000
 }
 
 .form-control{

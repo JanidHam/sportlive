@@ -31,12 +31,28 @@ module.exports = {
 	    unique: true
   	},
 
+    observations: 'text',
+
+    dateBegin: 'date',
+
+    dateEnd: 'date',
+
   	isActive: {
   		type: 'boolean',
   		defaultsTo: true
   	},
 
-  	observations: 'text'
+    activePackage: {
+      model: 'Paquete',
+      required: true
+    }
+    
   },
+
+  afterCreate: function(client, next) {
+    sails.io.sockets.emit('new client', client);
+    next();
+  }
+
 };
 

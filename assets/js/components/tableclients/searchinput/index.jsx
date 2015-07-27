@@ -8,10 +8,10 @@ class SearchInput extends React.Component {
 
 	handleChange(e) {
     	this.setState({ searchString:e.target.value })
+    	console.log(this)
   	}
 
   	render() {
-
   		return (
   			<input className="form-control" type="search" value={this.state.searchString} onChange={this.handleChange} placeholder="Buscar.." />
   		)
