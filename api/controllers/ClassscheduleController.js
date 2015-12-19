@@ -24,6 +24,38 @@ module.exports = {
     
 	},
 
+	getClassScheduleByClient: function (req, res) {
+	    Classschedule.find()
+	    .where({ client: req.param('clientID') })
+	    .populateAll()
+	    .exec(function (err, schedule) {
+        	if (err) return helpers.fail(err, res)
+
+        	res.statusCode = 200
+        	return res.json(helpers.jsonfy('ok', schedule))
+        	
+    	})
+    
+	},
+
+	deleteClassByeClient: function (clientID) {
+		var isOk = true
+		Classschedule.destroy({ client: clientID })
+		.exec({
+			error: function (err) {
+				console.log(err)
+				isOk = false
+				return isOk
+			},
+
+			success: function (schedule) {
+				console.log(schedule)
+				console.log('exito')
+				return isOk
+			}
+		})
+	},
+
 	addSchedule: function (schedule, clientID) {
 
 		var tempSchedule = [],

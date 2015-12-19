@@ -18,6 +18,7 @@ module.exports = {
 	    //}
 	    Client.find()
 	    .where( { isActive: true } )
+	    .populate('activePackage')
 	    .exec(function (err, clients) {
         	// do stuff
         	if (err) return helpers.fail(err, res)//res.json({ res: 'Ocurrió un error'})
@@ -31,11 +32,53 @@ module.exports = {
 
 	getAllClients: function (req, res) {
 		Client.find()
+		.populate('activePackage')
+		.sort('isActive DESC')
 		.exec(function (err, clients) {
 			if (err) return helpers.fail(err, res)//res.json({ res: 'Ocurrió un error'})
 
 			res.statusCode = 200
 			return res.json(helpers.jsonfy('ok', clients))
+		})
+	},
+
+	getClientById: function (req, res) {
+		res.view('editclient', { clientID: req.param('clientID') } )
+		/*Client.findOne({ id: req.param('clientID') })
+		.populateAll()
+		.exec(function (err, client) {
+			if (err) return res.view('editclient', { client: {}})
+
+			return res.view('editclient', { client: client })
+		})*/
+	},
+
+	deleteClienteByID: function (req, res) {
+		Client.destroy({ id: req.param('clientID') })
+		.exec({
+			error: function (err) {
+				return helpers.fail(err, res)
+			},
+			success: function () {
+				Classschedule.destroy({ client: req.param('clientID') })
+				.exec({
+					error: function (err) {
+						return helpers.fail(err, res)
+					},
+					success: function (schedule) {
+						Clientschedule.destroy({ client: req.param('clientID') })
+						.exec({
+							error: function (err) {
+								return helpers.fail(err, res)
+							},
+							success: function (schedule) {
+								res.statusCode = 200
+								return res.json(helpers.jsonfy('Cliente eliminado con éxito.', {} ))
+							}
+						})
+					}
+				})
+			}
 		})
 	},
 
@@ -71,8 +114,8 @@ module.exports = {
         		return res.json(helpers.jsonfy('Hubo un error agregando al client', {}))
 			}
 
-			res.statusCode = 200
-        	return res.json(helpers.jsonfy('ok', req.param('clientName') + ' agregado con exito.'))
+			//res.statusCode = 200
+        	//return res.json(helpers.jsonfy('ok', req.param('clientName') + ' agregado con exito.'))
 
 			var isOkSchedule = schedule.addSchedule( req.param('selectedClasses'), client.id )
 

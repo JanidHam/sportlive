@@ -33,6 +33,10 @@ module.exports = {
     	type: 'boolean',
     	defaultsTo: null
     },
+
+    month: {
+      type: 'integer'
+    }
   }
 };
 

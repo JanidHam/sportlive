@@ -40,11 +40,30 @@ module.exports.routes = {
     view: 'addclient'
   },
 
-  'POST /list-clients': 'ClientController.getActiveClients',
+  'GET /editar-cliente': 'ClientController.getClientById',/*{
+    view: 'editclient',
+    locals: { client: '1'}
+  },*/
+  
+  'POST /asist-client': 'ClientscheduleController.getAsistByClient',
+
+  'POST /class-update-id': 'ClientscheduleController.setAsistByClass',
+
+  'POST /release-schedule-client': 'ClientscheduleController.deleteClassesByClient',
+
+  'POST /remove-inAsist-client': 'ClientscheduleController.deleteInAsistByID',
+
+  'POST /list-clients': 'ClientController.getAllClients',
+
+  'POST /delete-client': 'ClientController.deleteClienteByID',
+
+  'POST /find-class-client': 'ClientscheduleController.findClassByDayAndHour',
 
   'POST /add-client': 'ClientController.addNewClient',
 
   'POST /classes-schedule': 'ClassscheduleController.getClassSchedule',
+
+  'POST /classes-schedule-client': 'ClassscheduleController.getClassScheduleByClient',
 
   'POST /hours': 'HourController.getAllHours',
 

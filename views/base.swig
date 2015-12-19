@@ -31,11 +31,11 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/asistenciaClientes.css">
     <link rel="stylesheet" href="/styles/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/editClient.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <link rel="stylesheet" href="/styles/style-responsive.css">
     <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
+    {% block cssFiles %}{% endblock cssFiles %}
   </head>
 
   <body>
@@ -77,8 +77,8 @@
           <section class="wrapper">
 
               <div class="row">
-                  <div class="col-lg-12 main-chart">                    
-                   <%- body %>
+                  <div class="col-lg-12 main-chart">
+                  {% block body %}{% endblock body %}
                   </div><!-- /col-lg-12 END SECTION MIDDLE -->
               </div><!--/row -->
           </section>
@@ -144,7 +144,8 @@
     <script src="/js/jquery.js"></script>
     <!--SCRIPTS END-->
     <!-- <script src="/js/dist/components/clientsAsists.js"></script> -->
-    <script src="/js/dist/components/addClient.js"></script>
+    {% block jsFiles %}{% endblock jsFiles %}
+    <!-- <script src="/js/dist/components/addClient.js"></script> -->
     <!-- <script src="js/dist/components/sidebar/sideBar.js" ></script> -->
   </body>
 </html>
